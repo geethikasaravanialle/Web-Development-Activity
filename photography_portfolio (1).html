@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="A fine-art photography portfolio showcasing portraits, weddings, travel and everyday stories.">
+  <title>Frame & Light | Photography Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --ink: #25251f; --muted: #77776e; --cream: #f7f5ef;
+      --paper: #fffefa; --olive: #74775b; --line: #e6e2d8;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { margin: 0; color: var(--ink); background: var(--paper); font-family: "DM Sans", sans-serif; }
+    a { color: inherit; text-decoration: none; }
+    img { display: block; width: 100%; object-fit: cover; }
+    .container { width: min(1120px, 90%); margin: auto; }
+    header { position: absolute; z-index: 5; inset: 0 0 auto; color: white; }
+    nav { display: flex; align-items: center; justify-content: space-between; padding: 27px 0; }
+    .logo { font-family: "Playfair Display", serif; font-size: 1.35rem; letter-spacing: .08em; }
+    .nav-links { display: flex; gap: 30px; font-size: .78rem; letter-spacing: .12em; text-transform: uppercase; }
+    .nav-links a { opacity: .9; transition: opacity .2s; }
+    .nav-links a:hover { opacity: .6; }
+    .menu-toggle { display: none; border: 1px solid #ffffff88; color: white; background: transparent; padding: 8px 12px; }
+    .hero { min-height: 720px; height: 92vh; max-height: 900px; position: relative; display: grid; place-items: center; text-align: center; color: white; background: linear-gradient(#17171355,#17171366), url("https://images.unsplash.com/photo-1470252649378-9c29740c9fa8?auto=format&fit=crop&w=2000&q=85") center/cover; }
+    .hero-content { width: min(760px, 90%); padding-top: 55px; }
+    .eyebrow { font-size: .72rem; letter-spacing: .25em; text-transform: uppercase; }
+    h1, h2, h3 { font-family: "Playfair Display", serif; font-weight: 500; }
+    h1 { font-size: clamp(3.3rem, 8vw, 6.7rem); line-height: 1.02; margin: 22px 0; }
+    .hero p { max-width: 520px; margin: 0 auto 34px; line-height: 1.8; color: #f1eee7; }
+    .button { display: inline-block; padding: 15px 25px; background: var(--olive); color: white; font-size: .75rem; letter-spacing: .13em; text-transform: uppercase; border: 1px solid var(--olive); transition: .2s; }
+    .button:hover { background: transparent; border-color: white; }
+    section { padding: 105px 0; }
+    .section-head { text-align: center; max-width: 650px; margin: 0 auto 48px; }
+    .section-head .eyebrow { color: var(--olive); }
+    h2 { font-size: clamp(2.4rem, 5vw, 3.7rem); margin: 12px 0 16px; }
+    .section-head p, .about-copy p { color: var(--muted); line-height: 1.9; }
+    .about { background: var(--cream); }
+    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8%; align-items: center; }
+    .about-image { height: 570px; }
+    .about-copy h2 { margin-top: 10px; }
+    .signature { margin-top: 28px; font-family: "Playfair Display", serif; font-style: italic; font-size: 1.45rem; color: var(--olive); }
+    .gallery-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; }
+    .gallery-grid img { height: 340px; transition: transform .4s; }
+    .gallery-grid a { overflow: hidden; background: var(--cream); }
+    .gallery-grid a:hover img { transform: scale(1.04); }
+    .services { background: var(--cream); }
+    .service-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+    .service-card { background: var(--paper); padding: 34px 28px; text-align: center; }
+    .service-card .number { color: var(--olive); letter-spacing: .15em; font-size: .75rem; }
+    .service-card h3 { font-size: 1.7rem; margin: 15px 0 10px; }
+    .service-card p { color: var(--muted); line-height: 1.8; font-size: .92rem; }
+    .packages-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; align-items: stretch; }
+    .package { border: 1px solid var(--line); padding: 35px 30px; display: flex; flex-direction: column; }
+    .package.featured { background: var(--ink); color: white; border-color: var(--ink); }
+    .package .tag { color: var(--olive); font-size: .7rem; letter-spacing: .16em; text-transform: uppercase; }
+    .package.featured .tag { color: #c8c9ae; }
+    .package h3 { font-size: 1.8rem; margin: 13px 0; }
+    .price { font-family: "Playfair Display", serif; font-size: 2.5rem; margin: 4px 0 18px; }
+    .package p, .package li { color: var(--muted); line-height: 1.8; font-size: .9rem; }
+    .package.featured p, .package.featured li { color: #d0d0c9; }
+    .package ul { padding-left: 18px; margin: 8px 0 25px; }
+    .package .button { margin-top: auto; text-align: center; }
+    .package.featured .button { background: #f7f5ef; color: var(--ink); border-color: #f7f5ef; }
+    .contact { background: var(--cream); }
+    .contact-grid { display: grid; grid-template-columns: .9fr 1.1fr; gap: 9%; }
+    .contact-info p { color: var(--muted); line-height: 1.9; }
+    .contact-detail { margin: 25px 0; }
+    .contact-detail strong { display: block; font-size: .72rem; letter-spacing: .14em; text-transform: uppercase; margin-bottom: 6px; }
+    form { display: grid; gap: 15px; }
+    input, textarea, select { width: 100%; padding: 15px; border: 1px solid var(--line); background: var(--paper); color: var(--ink); font: inherit; }
+    textarea { min-height: 130px; resize: vertical; }
+    form button { cursor: pointer; justify-self: start; }
+    #form-message { color: var(--olive); font-size: .9rem; min-height: 1.2em; }
+    footer { background: var(--ink); color: #e9e7df; padding: 30px 0; text-align: center; font-size: .8rem; }
+    footer span { color: #bfc0a3; }
+    @media (max-width: 760px) {
+      .nav-links { display: none; position: absolute; top: 75px; left: 5%; right: 5%; padding: 22px; background: #25251f; flex-direction: column; gap: 18px; }
+      .nav-links.open { display: flex; }
+      .menu-toggle { display: block; }
+      .hero { min-height: 650px; height: 88vh; }
+      section { padding: 75px 0; }
+      .about-grid, .contact-grid { grid-template-columns: 1fr; gap: 35px; }
+      .about-image { height: 420px; }
+      .gallery-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+      .gallery-grid img { height: 240px; }
+      .service-grid, .packages-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 430px) {
+      .gallery-grid { grid-template-columns: 1fr 1fr; }
+      .gallery-grid img { height: 180px; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <nav aria-label="Main navigation">
+        <a class="logo" href="#home">FRAME & LIGHT</a>
+        <button class="menu-toggle" id="menuToggle" aria-label="Toggle navigation" aria-expanded="false">Menu</button>
+        <div class="nav-links" id="navLinks">
+          <a href="#about">About</a><a href="#gallery">Gallery</a><a href="#services">Services</a><a href="#packages">Packages</a><a href="#contact">Contact</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="hero-content">
+        <div class="eyebrow">Photographer · Storyteller · Dreamer</div>
+        <h1>Moments made<br><em>timeless.</em></h1>
+        <p>Honest photographs, beautiful light, and the little in-between moments that become your favourite memories.</p>
+        <a class="button" href="#gallery">Explore my work</a>
+      </div>
+    </section>
+
+    <section class="about" id="about">
+      <div class="container about-grid">
+        <img class="about-image" src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=1000&q=85" alt="Portrait of a woman in soft natural light">
+        <div class="about-copy">
+          <div class="eyebrow">A little about me</div>
+          <h2>Hello, I'm Alex.</h2>
+          <p>I'm a photographer who believes the best pictures feel like you. I work with natural light and a relaxed approach to create photographs that are full of warmth, personality, and feeling.</p>
+          <p>From joyful celebrations to quiet everyday stories, my goal is to make you feel comfortable, seen, and completely yourself in front of the camera.</p>
+          <div class="signature">With love & light, Alex</div>
+        </div>
+      </div>
+    </section>
+
+    <section id="gallery">
+      <div class="container">
+        <div class="section-head">
+          <div class="eyebrow">Selected stories</div>
+          <h2>Through my lens</h2>
+          <p>A collection of people, places, and fleeting moments worth remembering.</p>
+        </div>
+        <div class="gallery-grid">
+          <a href="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1400&q=90" target="_blank" rel="noopener"><img src="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=700&q=85" alt="Romantic wedding celebration"></a>
+          <a href="https://images.unsplash.com/photo-1537633552985-df8429e8048b?auto=format&fit=crop&w=1400&q=90" target="_blank" rel="noopener"><img src="https://images.unsplash.com/photo-1537633552985-df8429e8048b?auto=format&fit=crop&w=700&q=85" alt="Wedding couple outdoors"></a>
+          <a href="https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?auto=format&fit=crop&w=1400&q=90" target="_blank" rel="noopener"><img src="https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?auto=format&fit=crop&w=700&q=85" alt="Natural light portrait"></a>
+          <a href="https://images.unsplash.com/photo-1470770841072-f978cf4d019e?auto=format&fit=crop&w=1400&q=90" target="_blank" rel="noopener"><img src="https://images.unsplash.com/photo-1470770841072-f978cf4d019e?auto=format&fit=crop&w=700&q=85" alt="Mountain lake landscape"></a>
+          <a href="https://images.unsplash.com/photo-1490750967868-88aa4486c946?auto=format&fit=crop&w=1400&q=90" target="_blank" rel="noopener"><img src="https://images.unsplash.com/photo-1490750967868-88aa4486c946?auto=format&fit=crop&w=700&q=85" alt="Soft flowers in a garden"></a>
+          <a href="https://images.unsplash.com/photo-1511895426328-dc8714191300?auto=format&fit=crop&w=1400&q=90" target="_blank" rel="noopener"><img src="https://images.unsplash.com/photo-1511895426328-dc8714191300?auto=format&fit=crop&w=700&q=85" alt="Family spending time together"></a>
+        </div>
+      </div>
+    </section>
+
+    <section class="services" id="services">
+      <div class="container">
+        <div class="section-head">
+          <div class="eyebrow">What I photograph</div>
+          <h2>Services</h2>
+          <p>Thoughtful photography for the milestones and everyday magic that matter most.</p>
+        </div>
+        <div class="service-grid">
+          <article class="service-card"><div class="number">01 / CELEBRATE</div><h3>Weddings</h3><p>From the quiet getting-ready moments to the dance floor, your day captured naturally and beautifully.</p></article>
+          <article class="service-card"><div class="number">02 / CONNECT</div><h3>Portraits</h3><p>Relaxed individual, couple, and family sessions that let your personality shine through.</p></article>
+          <article class="service-card"><div class="number">03 / EXPLORE</div><h3>Travel & Lifestyle</h3><p>Atmospheric images of meaningful places, creative brands, and the stories behind them.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section id="packages">
+      <div class="container">
+        <div class="section-head">
+          <div class="eyebrow">Simple & thoughtful</div>
+          <h2>Photography packages</h2>
+          <p>Starting prices are examples—get in touch for a package shaped around your plans.</p>
+        </div>
+        <div class="packages-grid">
+          <article class="package"><div class="tag">The essentials</div><h3>Portrait Session</h3><div class="price">₹4,999</div><p>A little time, a beautiful location, and photographs that feel like you.</p><ul><li>1-hour session</li><li>1 location</li><li>15 edited digital images</li><li>Online private gallery</li></ul><a class="button" href="#contact">Enquire now</a></article>
+          <article class="package featured"><div class="tag">Most loved</div><h3>Couple & Family</h3><div class="price">₹8,999</div><p>More time to relax, connect, and capture the moments in between.</p><ul><li>Up to 2-hour session</li><li>Up to 2 locations</li><li>35 edited digital images</li><li>Online private gallery</li></ul><a class="button" href="#contact">Enquire now</a></article>
+          <article class="package"><div class="tag">The full story</div><h3>Wedding Day</h3><div class="price">₹24,999</div><p>Beautifully documenting the atmosphere and emotion of your celebration.</p><ul><li>Up to 6 hours coverage</li><li>One photographer</li><li>200+ edited images</li><li>Private online gallery</li></ul><a class="button" href="#contact">Enquire now</a></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact" id="contact">
+      <div class="container contact-grid">
+        <div class="contact-info">
+          <div class="eyebrow">Let's create something</div>
+          <h2>Tell me your story.</h2>
+          <p>Have a date in mind or an idea you'd love to bring to life? I'd love to hear from you. Send a message and let's start planning.</p>
+          <div class="contact-detail"><strong>Email</strong><a href="mailto:hello@frameandlight.example">hello@frameandlight.example</a></div>
+          <div class="contact-detail"><strong>Phone</strong><a href="tel:+919876543210">+91 98765 43210</a></div>
+          <div class="contact-detail"><strong>Based in</strong><span>Vijayawada, India · Available for travel</span></div>
+          <p><small>Replace the sample email and phone number with your own contact details.</small></p>
+        </div>
+        <form id="contactForm">
+          <input type="text" name="name" placeholder="Your name" aria-label="Your name" required>
+          <input type="email" name="email" placeholder="Your email address" aria-label="Your email address" required>
+          <select name="service" aria-label="Photography service" required>
+            <option value="">I'm interested in...</option><option>Wedding photography</option><option>Portrait session</option><option>Couple or family session</option><option>Travel or lifestyle photography</option><option>Something else</option>
+          </select>
+          <textarea name="message" placeholder="Tell me a little about your plans..." aria-label="Your message" required></textarea>
+          <button class="button" type="submit">Send your enquiry</button>
+          <div id="form-message" role="status"></div>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer><div class="container">© <span id="year"></span> <span>FRAME & LIGHT</span> · Made with care and natural light.</div></footer>
+  <script>
+    const menuToggle = document.getElementById('menuToggle');
+    const navLinks = document.getElementById('navLinks');
+    menuToggle.addEventListener('click', () => {
+      const isOpen = navLinks.classList.toggle('open');
+      menuToggle.setAttribute('aria-expanded', String(isOpen));
+    });
+    navLinks.querySelectorAll('a').forEach(link => link.addEventListener('click', () => {
+      navLinks.classList.remove('open');
+      menuToggle.setAttribute('aria-expanded', 'false');
+    }));
+    document.getElementById('year').textContent = new Date().getFullYear();
+    document.getElementById('contactForm').addEventListener('submit', event => {
+      event.preventDefault();
+      document.getElementById('form-message').textContent =
+        'Thanks for reaching out! This demo form is not connected to email yet. Add a form service or your email handler to receive enquiries.';
+      event.target.reset();
+    });
+  </script>
+</body>
+</html>
